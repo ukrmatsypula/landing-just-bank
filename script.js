@@ -47,3 +47,11 @@ message
   .addEventListener('click', function () {
     message.remove();
   });
+// scroll to section-1
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  e.preventDefault();
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
