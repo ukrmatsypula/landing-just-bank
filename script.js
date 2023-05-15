@@ -1,15 +1,16 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modalWindow = document.querySelector('.modal-window');
 const overlay = document.querySelector('.overlay');
 const btnCloseModalWindow = document.querySelector('.btn--close-modal-window');
 const btnsOpenModalWindow = document.querySelectorAll(
   '.btn--show-modal-window'
 );
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
+///////////////////////////////////////
+// Modal window
 const openModalWindow = function (e) {
   e.preventDefault();
   modalWindow.classList.remove('hidden');
@@ -48,10 +49,19 @@ message
     message.remove();
   });
 // scroll to section-1
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault();
   section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+//Smooth page navigation
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains('nav__link')) {
+    const href = e.target.getAttribute('href');
+    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+  }
 });
