@@ -1,13 +1,19 @@
 'use strict';
-
+// modal
 const modalWindow = document.querySelector('.modal-window');
 const overlay = document.querySelector('.overlay');
 const btnCloseModalWindow = document.querySelector('.btn--close-modal-window');
 const btnsOpenModalWindow = document.querySelectorAll(
   '.btn--show-modal-window'
 );
+// see more
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+// tabs
+
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabsBtns = document.querySelectorAll('.operations__tab');
+const tabContents = document.querySelectorAll('.operations__content');
 
 ///////////////////////////////////////
 // Modal window
@@ -67,10 +73,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 // tabs
-
-const tabContainer = document.querySelector('.operations__tab-container');
-const tabsBtns = document.querySelectorAll('.operations__tab');
-const tabContents = document.querySelectorAll('.operations__content');
 
 tabContainer.addEventListener('click', function (e) {
   e.preventDefault();
