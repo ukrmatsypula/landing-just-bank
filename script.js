@@ -15,6 +15,9 @@ const tabContainer = document.querySelector('.operations__tab-container');
 const tabsBtns = document.querySelectorAll('.operations__tab');
 const tabContents = document.querySelectorAll('.operations__content');
 
+// nav highlight
+const nav = document.querySelector('.nav');
+
 ///////////////////////////////////////
 // Modal window
 const openModalWindow = function (e) {
@@ -72,6 +75,36 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+// animation highlight nav items
+
+const navLinksHoverAnimation = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const linkOver = e.target;
+
+    const siblingLinks = linkOver
+      .closest('.nav__links')
+      .querySelectorAll('.nav__link');
+
+    const logo = linkOver.closest('.nav').querySelector('img');
+    const logoText = linkOver.closest('.nav').querySelector('.nav__text');
+
+    siblingLinks.forEach(navLink => {
+      if (navLink !== linkOver) {
+        navLink.style.opacity = this;
+        navLink.style.transition = 'all 0.2s linear';
+      }
+    });
+
+    logo.style.opacity = this;
+    logo.style.transition = 'all 0.2s linear';
+    logoText.style.opacity = this;
+    logoText.style.transition = 'all 0.2s linear';
+  }
+};
+
+nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
+
+nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
 // tabs
 
 tabContainer.addEventListener('click', function (e) {
