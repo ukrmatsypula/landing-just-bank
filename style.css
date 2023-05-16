@@ -676,5 +676,6 @@ h4 {
   font-weight: 400;
   padding: 20px;
   position: fixed;
+  bottom: 0;
   z-index: 1000;
 }

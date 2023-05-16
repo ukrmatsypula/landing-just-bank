@@ -40,8 +40,8 @@ message.classList.add('cookie-message');
 message.innerHTML =
   'Мы используем на этом сайте cookie для улучшения функциональности <button class="btn btn--close-cookie">Ok!</button>';
 
-const header = document.querySelector('.header');
-header.prepend(message);
+const body = document.body;
+body.prepend(message);
 
 message
   .querySelector('.btn--close-cookie')
