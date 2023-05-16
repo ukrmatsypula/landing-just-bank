@@ -65,3 +65,30 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+// tabs
+
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabsBtns = document.querySelectorAll('.operations__tab');
+const tabContents = document.querySelectorAll('.operations__content');
+
+tabContainer.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const clickedButton = e.target.closest('.operations__tab');
+  if (!clickedButton) return;
+
+  // add/remove tabBtn class
+  tabsBtns.forEach(tab => tab.classList.remove('operations__tab--active'));
+  clickedButton.classList.add('operations__tab--active');
+
+  // add/remove tabContent class
+  const dataTabAttribute = clickedButton.getAttribute('data-tab');
+  tabContents.forEach(tabContent =>
+    tabContent.classList.remove('operations__content--active')
+  );
+
+  document
+    .querySelector(`.operations__content--${dataTabAttribute}`)
+    .classList.add('operations__content--active');
+});
