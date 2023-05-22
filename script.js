@@ -127,3 +127,12 @@ tabContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${dataTabAttribute}`)
     .classList.add('operations__content--active');
 });
+
+// sticky header
+window.addEventListener('scroll', function (e) {
+  if (window.scrollY >= section1.getBoundingClientRect().top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
