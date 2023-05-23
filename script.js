@@ -128,11 +128,27 @@ tabContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
-// sticky header
-window.addEventListener('scroll', function (e) {
-  if (window.scrollY >= section1.getBoundingClientRect().top) {
+// ####################################################
+// ######   INTERSECTION OBSERVER -> STICKY HEADER   ##
+// ####################################################
+
+const header = document.querySelector('.header');
+const headerHeight = nav.getBoundingClientRect().height;
+
+const getStickyNav = function (entries) {
+  const entry = entries[0];
+
+  if (!entry.isIntersecting) {
     nav.classList.add('sticky');
   } else {
     nav.classList.remove('sticky');
   }
+};
+
+const observer = new IntersectionObserver(getStickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${headerHeight}px`,
 });
+
+observer.observe(header);
