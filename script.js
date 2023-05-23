@@ -145,10 +145,14 @@ const getStickyNav = function (entries) {
   }
 };
 
-const observer = new IntersectionObserver(getStickyNav, {
+const headerObserver = new IntersectionObserver(getStickyNav, {
   root: null,
   threshold: 0,
   rootMargin: `-${headerHeight}px`,
 });
 
-observer.observe(header);
+headerObserver.observe(header);
+
+// #############################################################
+// ######   INTERSECTION OBSERVER -> SHOW SECTIONS HEADLINES  ##
+// #############################################################
