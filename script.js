@@ -179,3 +179,27 @@ allSections.forEach(section => {
   section.classList.add('section--hidden');
   sectionObserver.observe(section);
 });
+
+// #############################################################
+// ######   INTERSECTION OBSERVER -> IMPLEMENT LAZY LOADING IMAGES  ##
+// #############################################################
+
+const loadImages = function (entries, observer) {
+  const entry = entries[0];
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+  observer.unobserve(entry.target);
+};
+const lazyImages = document.querySelectorAll('img[data-src]');
+const lazyImagesObserver = new IntersectionObserver(loadImages, {
+  root: null,
+  threshold: 0.7,
+});
+
+lazyImages.forEach(image => lazyImagesObserver.observe(image));
