@@ -196,6 +196,7 @@ const loadImages = function (entries, observer) {
   });
   observer.unobserve(entry.target);
 };
+
 const lazyImages = document.querySelectorAll('img[data-src]');
 const lazyImagesObserver = new IntersectionObserver(loadImages, {
   root: null,
