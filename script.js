@@ -204,3 +204,41 @@ const lazyImagesObserver = new IntersectionObserver(loadImages, {
 });
 
 lazyImages.forEach(image => lazyImagesObserver.observe(image));
+
+// #############################################################
+// ######   CREATE CUSTON SLIDER  ##
+// #############################################################
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+const slidesNumber = slides.length;
+
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+
+const moveToSlide = function (slide) {
+  slides.forEach(
+    (s, index) => (s.style.transform = `translateX(${(index - slide) * 100}%)`)
+  );
+};
+
+moveToSlide(0);
+
+btnRight.addEventListener('click', function () {
+  if (currentSlide === slidesNumber - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+
+  moveToSlide(currentSlide);
+});
+
+btnLeft.addEventListener('click', function () {
+  if (currentSlide === 0) {
+    currentSlide = slidesNumber - 1;
+  } else {
+    currentSlide--;
+  }
+
+  moveToSlide(currentSlide);
+});
